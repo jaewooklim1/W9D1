@@ -12,16 +12,22 @@ export default class FlappyBird {
   animate() {
     this.level.animate(this.ctx);
     this.bird.animate(this.ctx);
+    if (this.running == true) {
+      requestAnimationFrame(this.animate);
+    }
   }
-  
   
   restart() {
     this.level = new Level(this.dimensions);
     this.bird = new Bird(this.dimensions);
-
+    this.running = false;
     this.animate();
   }
 
+  play() {
+    this.running = true;
+    this.animate();
+  }
 
 }
 
